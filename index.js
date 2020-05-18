@@ -27,11 +27,13 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *    counter1 is defining the count inside of the function and then updating it inside of counter().   Counter2 is updating a  variable set outside of the function
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ *    counter1 is using a closure because counter() is updating the value of count. Count was defined in the parent function, it passes down the scope of count to counter()
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *    We would want to use counter1 when we are running the function more than once. If we run counter2 more than once count would be compromised by the different function calls. 
 */
 
 // counter1 code
@@ -56,10 +58,9 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  const score = Math.round(Math.random() * 2);
+  return score;
 }
 
 /* Task 3: finalScore()
@@ -76,10 +77,17 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning, num){
+  let homeScore= 0;
+  let awayScore = 0;
+  for(let i = 0; i < num; i++){
+    homeScore =  homeScore + inning();
+    awayScore =  awayScore + inning();
+  }
+  return {
+    home: homeScore,
+    away: awayScore
+  }
 }
 
 /* Task 4: 
@@ -103,8 +111,24 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, num) {
+  let homeScore= 0;
+  let awayScore = 0;
+  for(let i = 1; i <= num; i++){
+    homeScore =  homeScore + inning();
+    awayScore =  awayScore + inning();
+    if (i === 1) {
+      console.log( `${i}st inning: ${homeScore} - ${awayScore}`);
+    } else if (i === 2) {
+      console.log( `${i}nd inning: ${homeScore} - ${awayScore}`);
+    } else if (i === 3) {
+      console.log( `${i}rd inning: ${homeScore} - ${awayScore}`);
+    } else {
+      console.log( `${i}th inning: ${homeScore} - ${awayScore}`);
+    }
+    
+  }
+  console.log( `Final Score: ${homeScore} - ${awayScore}`)
 }
 
 

@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+  closure is when the funcion looks outside of the function scope to find something that it needs.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,15 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+  In the function personalDice we are calling name on a anonymous function where name was only defined in the parent function. On personalDice.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+  calling dansRoll the second time is independent from the first time, it does not replace the first call of the function. They run separatly. Name rolled a will allways me the same, the roll of the dice changes.
+
+
+c. What is the lexical scope of `newRoll`?  
+  the variables declared inside the function.  newRoll is variable of the anonymous function.
+
 
 ### Task 3 - Stretch Goals
 
